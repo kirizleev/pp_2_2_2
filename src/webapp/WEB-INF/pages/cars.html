@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+</head>
+<body>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>Model</th>
+                <th>Year of fabrication</th>
+                <th>Mileage</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block>
+                <tr th:each="car : ${cars}">
+                    <th th:text="${car.getModel()}"/>
+                    <th th:text="${car.getManufactureYear()}"/>
+                    <th th:text="${car.getMileage()}"/>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
