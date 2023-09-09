@@ -1,18 +1,26 @@
 package service;
 
+import dao.CarDao;
 import model.Car;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Component
+@Service
 public class CarServiceImpl implements CarService {
+
+    private CarDao carDao;
+
+    @Autowired
+    public CarServiceImpl(CarDao carDao) {
+        this.carDao = carDao;
+    }
+
+    public CarServiceImpl() {}
 
     @Override
     public List<Car> carsList(List<Car> cars, Integer requestNum) {
-        if (requestNum == null || requestNum > cars.size()) {
-            return cars;
-        }
-        return cars.subList(0, requestNum);
+        return carDao.carsList(cars, requestNum);
     }
 }
